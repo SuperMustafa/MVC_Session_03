@@ -7,10 +7,11 @@ using IKEA.DAL.Models.Departments;
 
 namespace IKEA.DAL.Presistance.Repositories.Departments
 {
-    internal interface IDepartmentRepository
+    public interface IDepartmentRepository
     {
         //interface do not know access modifies at its attributes and functions
         IEnumerable<Department> GetAll(bool WithNoTracking = true);
+        IQueryable<Department> GetAllQueryable();
         Department? GetById(int id);
         int Add(Department department);
         int Update(Department department);

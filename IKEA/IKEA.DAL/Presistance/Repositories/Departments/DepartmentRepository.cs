@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IKEA.DAL.Presistance.Repositories.Departments
 {
-    internal class DepartmentRepository : IDepartmentRepository
+    public class DepartmentRepository : IDepartmentRepository
     {
         private readonly ApplicationDbContext _context; // create a refernce of class ApplicationDbContext
         public DepartmentRepository(ApplicationDbContext dbContext)  // talk here to data base
@@ -49,9 +49,9 @@ namespace IKEA.DAL.Presistance.Repositories.Departments
             return _context.SaveChanges();
         }
 
-      
-
-       
-       
+        public IQueryable<Department> GetAllQueryable()
+        {
+            return _context.Departments;
+        }
     }
 }

@@ -1,4 +1,5 @@
 using IKEA.DAL.Presistance.Data;
+using IKEA.DAL.Presistance.Repositories.Departments;
 using Microsoft.EntityFrameworkCore;
 
 namespace PL
@@ -15,9 +16,10 @@ namespace PL
             {
                 OptionsBuilder.UseSqlServer(builder.Configuration.GetConnectionString("Default_Connection"));
             }));
+            builder.Services.AddScoped<IDepartmentRepository,DepartmentRepository>();
 
             var app = builder.Build();
-
+            
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
